@@ -75,8 +75,12 @@
         const URL = "./my_model/";
 
         let model, webcam, labelContainer, maxPredictions;
+        let isInitialized = false; // ✅ 중복 실행 방지용 플래그
 
         async function init() {
+            if (isInitialized) return;
+            isInitialized = true;
+
             const modelURL = URL + "model.json";
             const metadataURL = URL + "metadata.json";
 
